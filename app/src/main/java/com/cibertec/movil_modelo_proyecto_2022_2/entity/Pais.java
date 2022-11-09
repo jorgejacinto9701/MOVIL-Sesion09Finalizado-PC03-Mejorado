@@ -1,6 +1,8 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.entity;
 
-public class Pais {
+import java.io.Serializable;
+
+public class Pais implements Serializable {
     private int idPais;
     private String iso;
     private String nombre;
