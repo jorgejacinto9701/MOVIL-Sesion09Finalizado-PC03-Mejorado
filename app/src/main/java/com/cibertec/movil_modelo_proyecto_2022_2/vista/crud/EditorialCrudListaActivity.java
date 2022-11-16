@@ -17,6 +17,8 @@ import com.cibertec.movil_modelo_proyecto_2022_2.util.ConnectionRest;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.NewAppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -91,6 +93,12 @@ public class EditorialCrudListaActivity extends NewAppCompatActivity {
             public void onResponse(Call<List<Editorial>> call, Response<List<Editorial>> response) {
                     if (response.isSuccessful()){
                         List<Editorial> salida = response.body();
+                        Collections.sort(salida, new Comparator<Editorial>() {
+                            @Override
+                            public int compare(Editorial e1, Editorial e2) {
+                                return e1.getRazonSocial().compareTo(e2.getRazonSocial());
+                            }
+                        });
                         data.clear();;
                         data.addAll(salida);
                         adaptador.notifyDataSetChanged();

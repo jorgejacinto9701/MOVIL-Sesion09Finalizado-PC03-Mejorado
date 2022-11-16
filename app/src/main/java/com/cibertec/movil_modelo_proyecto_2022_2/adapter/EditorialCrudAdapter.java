@@ -1,6 +1,7 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,16 @@ public class EditorialCrudAdapter extends ArrayAdapter<Editorial> {
 
         TextView txtID = row.findViewById(R.id.idCrudEditorialItemID);
         txtID.setText(String.valueOf(obj.getIdEditorial()));
+        if (position%2 ==0){
+            txtID.setBackgroundColor(Color.rgb(204, 255, 204));
+        }
 
         TextView  txtRazSoc = row.findViewById(R.id.idCrudEditorialItemRazoSocial);
         txtRazSoc.setText(String.valueOf(obj.getRazonSocial()));
 
+        if (position%2 ==0){
+            txtRazSoc.setBackgroundColor(Color.rgb(204, 255, 204));
+        }
         return row;
     }
 }

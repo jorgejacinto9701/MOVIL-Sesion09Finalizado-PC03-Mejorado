@@ -1,10 +1,17 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.vista.crud;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.icu.text.DecimalFormatSymbols;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,8 +26,11 @@ import com.cibertec.movil_modelo_proyecto_2022_2.util.FunctionUtil;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.NewAppCompatActivity;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.ValidacionUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,6 +86,33 @@ public class EditorialCrudFormularioActivity extends NewAppCompatActivity {
         Bundle extras = getIntent().getExtras();
         tipo = extras.getString("var_tipo");
 
+        Locale locale = new Locale("es");
+        Locale.setDefault(locale);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.setLocale(locale);
+        createConfigurationContext(config);
+
+        txtFec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar myCalendar= Calendar.getInstance();
+                new DatePickerDialog(
+                EditorialCrudFormularioActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month , int day) {
+                        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd", new Locale("es"));
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH,month);
+                        myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                        txtFec.setText(dateFormat.format(myCalendar.getTime()));
+                    }
+                 },
+                 myCalendar.get(Calendar.YEAR),
+                 myCalendar.get(Calendar.MONTH),
+                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         if (tipo.equals("REGISTRAR")){
             txtTitulo.setText("Mantenimiento Editorial - REGISTRA");

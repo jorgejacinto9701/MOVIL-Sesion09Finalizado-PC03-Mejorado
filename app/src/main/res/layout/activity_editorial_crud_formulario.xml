@@ -63,7 +63,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:inputType="number"
+            android:maxLength="11"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:padding="4dp" />
+            android:padding="4dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:padding="4dp"
+            android:padding="2dp"
             android:minHeight="48dp"
             />
 
