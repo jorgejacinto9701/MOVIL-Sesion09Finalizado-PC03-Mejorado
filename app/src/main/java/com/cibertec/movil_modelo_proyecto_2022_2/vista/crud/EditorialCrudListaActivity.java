@@ -96,7 +96,7 @@ public class EditorialCrudListaActivity extends NewAppCompatActivity {
                         Collections.sort(salida, new Comparator<Editorial>() {
                             @Override
                             public int compare(Editorial e1, Editorial e2) {
-                                return e1.getRazonSocial().compareTo(e2.getRazonSocial());
+                               return e1.getRazonSocial().toLowerCase().compareTo(e2.getRazonSocial().toLowerCase());
                             }
                         });
                         data.clear();;
