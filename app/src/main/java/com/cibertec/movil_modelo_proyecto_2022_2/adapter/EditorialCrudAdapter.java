@@ -34,15 +34,13 @@ public class EditorialCrudAdapter extends ArrayAdapter<Editorial> {
 
         TextView txtID = row.findViewById(R.id.idCrudEditorialItemID);
         txtID.setText(String.valueOf(obj.getIdEditorial()));
-        if (position%2 ==0){
-            txtID.setBackgroundColor(Color.rgb(204, 255, 204));
-        }
 
         TextView  txtRazSoc = row.findViewById(R.id.idCrudEditorialItemRazoSocial);
         txtRazSoc.setText(String.valueOf(obj.getRazonSocial()));
 
         if (position%2 ==0){
             txtRazSoc.setBackgroundColor(Color.rgb(204, 255, 204));
+            txtID.setBackgroundColor(Color.rgb(204, 255, 204));
         }
         return row;
     }
